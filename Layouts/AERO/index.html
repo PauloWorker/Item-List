@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AeroCSS Demo</title>
+
+<style>
+
+:root{
+    --aero-blue:#4a87c7;
+    --aero-dark:#29527a;
+    --aero-light:#f5fbff;
+    --glass:rgba(255,255,255,.55);
+    --border:#8fb6d8;
+}
+
+/* ======================
+   RESET
+====================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Segoe UI",Tahoma,sans-serif;
+    background:
+        linear-gradient(
+            to bottom,
+            #dbefff 0%,
+            #c5dcf5 40%,
+            #9fc3e5 100%
+        );
+    min-height:100vh;
+    color:#222;
+}
+
+/* ======================
+   LAYOUT
+====================== */
+
+.container{
+    width:95%;
+    max-width:1400px;
+    margin:auto;
+    padding:20px;
+}
+
+.row{
+    display:flex;
+    flex-wrap:wrap;
+    margin:-10px;
+}
+
+[class*="col-"]{
+    padding:10px;
+}
+
+.col-12{width:100%;}
+.col-6{width:50%;}
+.col-4{width:33.333%;}
+.col-3{width:25%;}
+
+@media(max-width:900px){
+    .col-6,
+    .col-4,
+    .col-3{
+        width:100%;
+    }
+}
+
+/* ======================
+   NAVBAR
+====================== */
+
+.navbar{
+    height:60px;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.8),
+            rgba(255,255,255,.3)
+        );
+
+    border-bottom:1px solid white;
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 1px 0 white,
+        0 5px 15px rgba(0,0,0,.15);
+}
+
+.nav-inner{
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    font-size:24px;
+    font-weight:600;
+    color:var(--aero-dark);
+}
+
+.nav-links a{
+    color:var(--aero-dark);
+    text-decoration:none;
+    margin-left:20px;
+}
+
+.nav-links a:hover{
+    text-decoration:underline;
+}
+
+/* ======================
+   WINDOW
+====================== */
+
+.window{
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.35);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.7);
+
+    box-shadow:
+        inset 0 1px 0 white,
+        0 15px 30px rgba(0,0,0,.2);
+}
+
+.window-titlebar{
+
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 12px;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.9),
+            rgba(130,180,230,.45)
+        );
+}
+
+.window-title{
+    font-weight:600;
+}
+
+.window-controls{
+    display:flex;
+    gap:6px;
+}
+
+.control{
+
+    width:16px;
+    height:16px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(0,0,0,.15);
+}
+
+.min{background:#ffd469;}
+.max{background:#7eea81;}
+.close{background:#ff6f6f;}
+
+.window-body{
+    padding:20px;
+}
+
+/* ======================
+   PANEL
+====================== */
+
+.panel{
+
+    margin-bottom:20px;
+
+    border-radius:8px;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.8),
+            rgba(255,255,255,.45)
+        );
+
+    border:1px solid rgba(255,255,255,.8);
+
+    padding:18px;
+
+    box-shadow:
+        inset 0 1px 0 white,
+        0 4px 10px rgba(0,0,0,.1);
+}
+
+/* ======================
+   BUTTONS
+====================== */
+
+.btn{
+
+    padding:8px 16px;
+
+    border-radius:4px;
+
+    border:1px solid #6f97ba;
+
+    cursor:pointer;
+
+    color:#123;
+
+    background:
+        linear-gradient(
+            white,
+            #d7ebff
+        );
+
+    box-shadow:
+        inset 0 1px 0 white,
+        0 1px 3px rgba(0,0,0,.15);
+}
+
+.btn:hover{
+
+    background:
+        linear-gradient(
+            white,
+            #bee0ff
+        );
+}
+
+.btn-primary{
+    color:white;
+    border-color:#2d69a8;
+    background:
+        linear-gradient(
+            #79c3ff,
+            #2f80d7
+        );
+}
+
+.btn-success{
+    color:white;
+    border-color:#4b8f37;
+    background:
+        linear-gradient(
+            #8ee678,
+            #4a9c2d
+        );
+}
+
+.btn-danger{
+    color:white;
+    border-color:#972e2e;
+    background:
+        linear-gradient(
+            #ffafaf,
+            #d94646
+        );
+}
+
+/* ======================
+   FORM
+====================== */
+
+.form-group{
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    margin-bottom:5px;
+}
+
+.input,
+.select,
+.textarea{
+
+    width:100%;
+
+    padding:9px 12px;
+
+    border-radius:4px;
+
+    border:1px solid var(--border);
+
+    background:
+        linear-gradient(
+            white,
+            #eff7ff
+        );
+
+    box-shadow:
+        inset 0 1px 3px rgba(0,0,0,.12);
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus{
+    outline:none;
+
+    border-color:#4096ff;
+
+    box-shadow:
+        0 0 12px rgba(64,150,255,.4);
+}
+
+.textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+/* ======================
+   CHECKBOX
+====================== */
+
+.check{
+    margin-bottom:8px;
+}
+
+.check input{
+    accent-color:#2f80d7;
+}
+
+/* ======================
+   TOOLTIP
+====================== */
+
+.tooltip{
+    position:relative;
+    display:inline-block;
+    color:#0c5eb3;
+}
+
+.tip{
+
+    opacity:0;
+
+    pointer-events:none;
+
+    position:absolute;
+
+    bottom:140%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    white-space:nowrap;
+
+    padding:8px 10px;
+
+    border-radius:4px;
+
+    background:
+        linear-gradient(
+            white,
+            #dceeff
+        );
+
+    border:1px solid var(--border);
+
+    transition:.2s;
+}
+
+.tooltip:hover .tip{
+    opacity:1;
+}
+
+/* ======================
+   ALERTS
+====================== */
+
+.alert{
+    padding:12px;
+    border-radius:6px;
+    margin-bottom:10px;
+}
+
+.info{
+    background:#dcefff;
+    border:1px solid #8ec0ed;
+}
+
+.success{
+    background:#def5d5;
+    border:1px solid #87c775;
+}
+
+.danger{
+    background:#ffdede;
+    border:1px solid #e38a8a;
+}
+
+/* ======================
+   TABLE
+====================== */
+
+.table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.table th{
+
+    background:
+        linear-gradient(
+            #edf7ff,
+            #cde6fb
+        );
+}
+
+.table th,
+.table td{
+    border:1px solid #bdd5eb;
+    padding:10px;
+}
+
+.table tr:hover{
+    background:rgba(255,255,255,.4);
+}
+
+/* ======================
+   TABS
+====================== */
+
+.tabs{
+    display:flex;
+    gap:4px;
+    margin-bottom:15px;
+}
+
+.tab{
+    padding:8px 15px;
+
+    border:1px solid #90b5d6;
+
+    border-bottom:none;
+
+    border-radius:5px 5px 0 0;
+
+    background:
+        linear-gradient(
+            white,
+            #dceeff
+        );
+}
+
+/* ======================
+   PROGRESS
+====================== */
+
+.progress{
+
+    height:22px;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    border:1px solid #8db6d9;
+
+    background:white;
+}
+
+.progress-bar{
+
+    width:67%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            #94d4ff,
+            #2e83da
+        );
+}
+
+/* ======================
+   LINKS
+====================== */
+
+a.link{
+    color:#0066cc;
+}
+
+a.link:hover{
+    text-decoration:none;
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-inner">
+
+        <div class="brand">
+            AeroCSS
+        </div>
+
+        <div class="nav-links">
+            #
+            #
+            #
+            #Themes</a>
+        </div>
+
+    </div>
+</nav>
+
+<div class="container">
+
+<div class="window">
+
+<div class="window-titlebar">
+
+  
